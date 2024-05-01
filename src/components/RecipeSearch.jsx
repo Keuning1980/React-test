@@ -1,29 +1,37 @@
-// import { Textinput } from "./ui/textInput";
-import { Input } from '@chakra-ui/react';
-import { useState } from "react";
+import React from "react";
+import { Center, Heading, Input, VStack, SimpleGrid } from "@chakra-ui/react";
 import { data } from "../utils/data";
-import { RecipeCard } from "./RecipeCard";
+import { RecipeCard } from "../components/RecipeCard";
 
-export const RecipeSearch = () => {
-  const [searchField, setSearchField] = useState(" ");
-
+export const RecipeSearch = ({ setResults }) => {
   const handleChange = (event) => {
-	console.log("event:",event)
-    setSearchField(event.target.value);
+    const searchTerm = event.target.value.toLowerCase();
+    const matchedRecipes = data.hits.filter(({ recipe }) => {
+      const recipeNameMatch = recipe.label.toLowerCase().includes(searchTerm);
+      const healthLabelMatch = recipe.healthLabels.some((label) =>
+        label.toLowerCase().includes(searchTerm)
+      );
+      return recipeNameMatch || healthLabelMatch;
+    });
+    setResults(matchedRecipes);
   };
 
-  const searchResult = data.hits.filter((item) => {
-    return item.recipe.label.toLowerCase().includes(searchField.toLowerCase());
-  });
-
   return (
-    <>
-      <label> Search recipe</label>
-      <Input onChange={handleChange} />
-      <p> {searchField} </p>
-      {searchResult.map((item) => (
-        <RecipeCard key={item.recipe.label} item={item} />
-      ))}
-    </>
+    <VStack spacing={4} mb={4}>
+      <Center>
+        <Heading color="white" as="h2" size="xl">
+          WINC Recipe Search
+        </Heading>
+      </Center>
+
+      <Center>
+        <Input
+          minWidth="500px"
+          bgColor="white"
+          placeholder="Search Recipe"
+          onChange={handleChange}
+        />
+      </Center>
+    </VStack>
   );
 };

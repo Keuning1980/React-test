@@ -1,27 +1,30 @@
+import React from "react";
 import { useState } from "react";
 import { data } from "../utils/data";
 import { RecipeCard } from "../components/RecipeCard";
 import { RecipeSearch } from "../components/RecipeSearch";
+import { Center, Flex, Box } from "@chakra-ui/react";
 
-export const RecipeListPage = ({ setRecipe }) => { 
-  console.log("ssetRecipe:",{setRecipe})
-	const [selectedRecipeList, setSelectedRecipeList] = useState(data.hits);
+export const RecipeListPage = ({ setRecipe }) => {
+  const [selectedRecipeList, setSelectedRecipeList] = useState(data.hits);
 
-  const handleSearch = (results) => {
-    setSearchResults(results);
-
- 
-  };
-  console.log(typeof clickFn)
   return (
     <>
-      <RecipeSearch onSearch={handleSearch} />
-      {/* {searchResults.map((item) => (
-        <RecipeCard ={clickFn} item={item} key={item.recipe.label}/> */}
-   {/* ))} */}
-<RecipeCard setRecipe={setRecipe} recipes={selectedRecipeList} />
-   
+      <Center bgColor="blue.200"> 
+        <RecipeSearch setResults={setSelectedRecipeList} />
+      </Center>
+
+      <Flex
+     bgColor="blue.200"
+        flexWrap="wrap"
+        justifyContent="center"
+        alignItems="flex-start"
+        spacing={4}
+      >
+        {selectedRecipeList.map((recipe, index) => (
+          <RecipeCard key={index} setRecipe={setRecipe} recipes={[recipe]} />
+        ))}
+      </Flex>
     </>
   );
 };
-
