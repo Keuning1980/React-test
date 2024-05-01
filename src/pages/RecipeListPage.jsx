@@ -10,7 +10,7 @@ export const RecipeListPage = ({ setRecipe }) => {
 
   return (
     <>
-      <Center bgColor="blue.200"> 
+      <Center bgColor="blue.200" m={0} p={0}> 
         <RecipeSearch setResults={setSelectedRecipeList} />
       </Center>
 

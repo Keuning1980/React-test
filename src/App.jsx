@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { RecipePage } from "./pages/RecipePage";
-import { ChakraProvider } from "@chakra-ui/react";
+
 import { RecipeListPage } from "./pages/RecipeListPage";
+import { ChakraProvider, Box, CSSReset } from '@chakra-ui/react';
 
 export const App = () => {
   const [selectedRecipe, setSelectedRecipe] = useState();
@@ -9,13 +10,16 @@ export const App = () => {
   return (
     <>
       <ChakraProvider>
-        {selectedRecipe ? (
+        <CSSReset/>
+       <Box bgColor="blue.200" minHeight="100vh" display="flex" flexDirection="column" > {selectedRecipe ? (
           <RecipePage recipe={selectedRecipe} setRecipe={setSelectedRecipe} />
         ) : (
           <>
             <RecipeListPage setRecipe={setSelectedRecipe} />
           </>
         )}
+</Box> 
+
       </ChakraProvider>
     </>
   );
