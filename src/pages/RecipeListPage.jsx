@@ -8,12 +8,15 @@ import { Center, Flex, Box } from "@chakra-ui/react";
 export const RecipeListPage = ({ setRecipe }) => {
   const [selectedRecipeList, setSelectedRecipeList] = useState(data.hits);
 
+
+
   return (
     <>
+   
       <Center bgColor="blue.200" m={0} p={0}> 
         <RecipeSearch setResults={setSelectedRecipeList} />
       </Center>
-
+    
       <Flex
      bgColor="blue.200"
         flexWrap="wrap"

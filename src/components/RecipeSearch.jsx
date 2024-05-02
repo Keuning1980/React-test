@@ -1,5 +1,12 @@
 import React from "react";
-import { Center, Heading, Input, VStack, SimpleGrid } from "@chakra-ui/react";
+import {
+  Center,
+  Heading,
+  Input,
+  VStack,
+  SimpleGrid,
+  Box,
+} from "@chakra-ui/react";
 import { data } from "../utils/data";
 import { RecipeCard } from "../components/RecipeCard";
 
@@ -17,8 +24,8 @@ export const RecipeSearch = ({ setResults }) => {
   };
 
   return (
-    <VStack spacing={4} mb={4}>
-      <Center>
+    <Box>
+      <Center justifyContent="center">
         <Heading color="white" as="h2" size="xl">
           WINC Recipe Search
         </Heading>
@@ -26,12 +33,13 @@ export const RecipeSearch = ({ setResults }) => {
 
       <Center>
         <Input
-          minWidth="500px"
+          minWidth={{ base: "300px", lg: "500px" }}
+          maxWidth={{ base: "300px", lg: "600px" }}
           bgColor="white"
           placeholder="Search Recipe"
           onChange={handleChange}
         />
       </Center>
-    </VStack>
+    </Box>
   );
 };

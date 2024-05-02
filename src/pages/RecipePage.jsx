@@ -20,7 +20,7 @@ import {
 
 export const RecipePage = ({ recipe, setRecipe }) => {
   return (
-    <Container bgColor="blue.200">
+    <Container bgColor="white">
       {/* <VStack w="full" h="full" p={0} spacing={2} alignItems="flex-start"> */}
       <Button w="fit-content" onClick={() => setRecipe()}>
         back
@@ -81,12 +81,26 @@ export const RecipePage = ({ recipe, setRecipe }) => {
             {recipe.cautions}{" "}
           </Text>
           <Text>Total Nutrients: </Text>
-          CALORIES: {Math.round(recipe.totalNutrients.ENERC_KCAL.quantity)}{" "}
-          CARBS: {Math.round(recipe.totalNutrients.CHOCDF.quantity)}
-          PROTEIN: {Math.round(recipe.totalNutrients.PROCNT.quantity)}
-          FAT: {Math.round(recipe.totalNutrients.FAT.quantity)}
-          CHOLESTEROL: {Math.round(recipe.totalNutrients.CHOLE.quantity)}
-          SODIUM {Math.round(recipe.totalNutrients.NA.quantity)}
+          <Text>
+            {" "}
+            CALORIES: {Math.round(
+              recipe.totalNutrients.ENERC_KCAL.quantity
+            )}{" "}
+          </Text>
+          <Text>
+            {" "}
+            CARBS: {Math.round(recipe.totalNutrients.CHOCDF.quantity)}
+          </Text>
+          <Text>
+            {" "}
+            PROTEIN: {Math.round(recipe.totalNutrients.PROCNT.quantity)}
+          </Text>
+          <Text> FAT: {Math.round(recipe.totalNutrients.FAT.quantity)}</Text>
+          <Text>
+            {" "}
+            CHOLESTEROL: {Math.round(recipe.totalNutrients.CHOLE.quantity)}
+          </Text>
+          <Text> SODIUM: {Math.round(recipe.totalNutrients.NA.quantity)}</Text>
         </Box>
       </SimpleGrid>
       {/* </VStack> */}
